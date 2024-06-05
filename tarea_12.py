@@ -1,37 +1,39 @@
-def es_primo(num):
-  if num <= 1:
-      return False
-  return all(num % i != 0 for i in range(2, int(num ** 0.5) + 1))
+#Leer dos números enteros y si la diferencia entre los dos números es par mostrar en pantalla la suma de los dígitos de los números, si dicha diferencia es un número primo menor que 10 entonces mostrar en pantalla el producto de los dos números y si la diferencia entre ellos terminar en 4 mostrar en pantalla todos los dígitos por separado.
 
-def suma_digitos(num):
-  return sum(int(digito) for digito in str(num))
+print("Juego (Ejercicio 12): Me daras dos numeros de esos sacare su diferencia si: Su resultado es un numero par te mostrare la suma entre los 2 numeros Si su resultado es un numero primo te mostrare su producto Si termina en cuatro el resultado te mostrare los digitos de los numeros")
 
-def mostrar_digitos_por_separado(num):
-  return " ".join(str(num))
-
-def main():
-
-  num1 = int(input("Ingrese el primer número entero: "))
-  num2 = int(input("Ingrese el segundo número entero: "))
-
-  diferencia = abs(num1 - num2)
+num1 = int(input("Ingrese el primer numero: "))
+num2 = int(input("Ingrese el segundo numero: "))
 
 
-  if diferencia % 2 == 0:
-      suma1 = suma_digitos(num1)
-      suma2 = suma_digitos(num2)
-      print(f"La diferencia es par. Suma de los dígitos de {num1}: {suma1}, Suma de los dígitos de {num2}: {suma2}")
+if num1 and num2 <= 0 or num1 and num2 >= 100 or num1 and num2 < 10:
 
-  elif es_primo(diferencia) and diferencia < 10:
-      producto = num1 * num2
-      print(f"La diferencia es un número primo menor que 10. Producto de {num1} y {num2}: {producto}")
-  
-  elif str(diferencia).endswith('4'):
-      digitos_num1 = mostrar_digitos_por_separado(num1)
-      digitos_num2 = mostrar_digitos_por_separado(num2)
-      print(f"La diferencia termina en 4. Dígitos de {num1} por separado: {digitos_num1}, Dígitos de {num2} por separado: {digitos_num2}")
-  else:
-      print("No se cumple ninguna condición específica.")
+    quit("El numero dado es mayor a 2 digitos o es negativo.")
 
-if __name__ == "__main__":
-  main()
+else:
+    resultado = abs(num1 - num2)
+
+    if resultado %2 == 0: 
+        primerDigito = int(num1/10) 
+        segundoDigito = num1%10 
+        tercerDigito = int(num2/10)
+        cuartoDigito = num2%10
+        print("El numero es un numero par: » La suma de los digitos es: ", primerDigito + segundoDigito + tercerDigito + cuartoDigito)
+    else:
+        print("El resultado no es un numero par...")
+
+    if resultado == 2 or resultado == 3 or resultado == 5 or resultado == 7:
+        print("Este numero es un numero primo menor a 10 » La multiplicacion de los numeros es: ", num1*num2)
+    else:
+        print("El resultado no es un numero primo...")
+    if resultado%10 == 4: 
+        print("La diferencia de los numeros", num1, "y ", num2, " terminan en 4 te mostrare los digitos por separado de cada numero:")
+
+        print("Digitos del primero numero (", num1, "): ")
+        for digitos in str(num1):
+            print(digitos)
+        print("Digitos del segundo numero (", num2, "): ")
+        for digitos in str(num2):
+            print(digitos)
+    else:
+        print("El numero no termina en 4...")
