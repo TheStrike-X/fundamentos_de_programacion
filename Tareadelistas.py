@@ -1,6 +1,6 @@
 #1. Leer 10 enteros, almacenarlos en una lista y determinar en qué posición del arreglo está el mayor número leído.
 
-classmate_1 = 'JAMES'
+classmate_1 = 'ROBERTO'
 
 numbers = []
 for i in range(10):
